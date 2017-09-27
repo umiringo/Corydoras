@@ -1,16 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GlobalDefines : MonoBehaviour {
+namespace GlobalDefines
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public enum Language
+    {
+        English = 1,
+        Japanese = 2,
+        TChinese = 3,
+        SChinese = 4,
+    }
+
+    public enum KanaType
+    {
+        Hira = 1,
+        Kata = 2,
+    }
+
+    public class DefineNumber
+    {
+        public static readonly int MaxPreKana = 8;
+    }
 }
