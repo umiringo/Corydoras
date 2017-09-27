@@ -20,5 +20,6 @@ namespace GlobalDefines
     public class DefineNumber
     {
         public static readonly int MaxPreKana = 8;
+        public static readonly int AllKanaNum = 46;
     }
 }
