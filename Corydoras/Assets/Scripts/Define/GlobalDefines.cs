@@ -21,5 +21,9 @@ namespace GlobalDefines
     {
         public static readonly int MaxPreKana = 8;
         public static readonly int AllKanaNum = 46;
+        public static readonly int MaxLevel = 4;
+        public static readonly int LevelUpNum = 8;
+        public static readonly int Cooldown = 5;
+        public static readonly int QuestionNumToRand = 32;
     }
 }

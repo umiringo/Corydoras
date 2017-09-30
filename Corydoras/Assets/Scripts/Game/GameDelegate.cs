@@ -5,7 +5,7 @@ using GlobalDefines;
 
 public class GameDelegate : MonoBehaviour {
     private GameDirector gameDirector;
-
+    
     void Awake()
     {
         gameDirector = gameObject.GetComponent<GameDirector>();
@@ -20,5 +20,8 @@ public class GameDelegate : MonoBehaviour {
         
     }
 
-    
+    public void OnChoice(int index)
+    {
+        gameDirector.Choice(index);
+    }
 }
