@@ -78,7 +78,6 @@ public class GamePlayMgr : Singleton<GamePlayMgr>
             } while(choiceItems.Contains(choice));
             choiceItems.Add(choice);
         }
-
         ShuffleChoiceItems();
     }
 
@@ -118,14 +117,31 @@ public class GamePlayMgr : Singleton<GamePlayMgr>
         return "Unknown";
     }
 
+    public string GetChoiceKana(int index, KanaType type)
+    {
+		if (index >= DefineNumber.AllKanaNum) {
+			return "Err";
+		}
+
+		if (type == KanaType.Kata) {
+			return allHiragana[index];
+		}
+
+        if (type == KanaType.Hira) {
+			return allKatakana[index];
+		}
+
+		return "Unknown";
+    }
+
     private void ShuffleChoiceItems()
     {
         int i = choiceItems.Count;
         while(i > 0)
         {
-            int j = Random.Range(0, i + 1);
-            int tmp = choiceItems[i];
-            choiceItems[i] = choiceItems[j];
+            int j = Random.Range(0, i);
+            int tmp = choiceItems[i-1];
+            choiceItems[i-1] = choiceItems[j];
             choiceItems[j] = tmp;
             --i;
         }

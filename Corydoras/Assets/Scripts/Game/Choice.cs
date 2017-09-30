@@ -5,24 +5,26 @@ using GlobalDefines;
 
 public class Choice : MonoBehaviour {
     
-    public List<GameObject> Choices = new List<GameObject>();
-    public readonly Vector3[] itemPosition = new Vector3[] {
-        new Vector3(0, 50, 0),
-        new Vector3(50, 0 ,0),
-        new Vector3(0, -50, 0),
-        new Vector3(-50, 0, 0),
+    public List<GameObject> choicesObjList = new List<GameObject>();
+    private  Vector2[] itemPosition = new Vector2[] {
+        new Vector2(0, 400),
+        new Vector2(400, 0),
+        new Vector2(0, -400),
+        new Vector2(-400, 0),
     };
     private int curLevel = 0;
     public GameDirector director;
 
-	// Use this for initialization
-	void Start () {
-	   ClearChoices();
-       director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
-       director.choice = this;
-	
+    // Use this for initialization
+    void Start()
+    {
+        ClearChoices();
+        director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
+        director.choice = this;
+    }
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 		
 	}
 
@@ -31,9 +33,9 @@ public class Choice : MonoBehaviour {
         if(curLevel == level) 
         {
             List<int> choicesList = GamePlayMgr.Instance.GetChoiceItems();
-            for(int i = 0; i < Choices.Count; ++i)
+            for(int i = 0; i < choicesObjList.Count; ++i)
             {
-                Choices[i].GetComponent<ChoiceItem>().Assemble(choicesList[i], type);
+                choicesObjList[i].GetComponent<ChoiceItem>().Assemble(choicesList[i], type);
             }
         }
         else 
@@ -42,11 +44,12 @@ public class Choice : MonoBehaviour {
             List<int> choicesList = GamePlayMgr.Instance.GetChoiceItems(); 
             for(int i = 0; i < level; i++)
             {
-                GameObject item = Instantiate(Resources.Load("Prefabs/" + item) as GameObject);
-                item.GetComponent<RectTransform>().position = itemPosition[i];
-                item.transform.parent = this.gameObject.transform;
+                GameObject item = Instantiate(Resources.Load("Prefabs/Item") as GameObject);
+                item.transform.SetParent(transform);
+				item.GetComponent<RectTransform>().anchoredPosition = itemPosition[i];
                 item.GetComponent<ChoiceItem>().Assemble(choicesList[i], type);
-                choicesList.Add(item);
+                item.name = "Item" + i; 
+                choicesObjList.Add(item);
             }
         }
         curLevel = level;
@@ -54,10 +57,10 @@ public class Choice : MonoBehaviour {
 
     private void ClearChoices()
     {
-        for(int i = 0; i < Choices.Count; ++i)
+        for(int i = 0; i < choicesObjList.Count; ++i)
         {
-            DestroyObject(Choices[i]);
+            DestroyObject(choicesObjList[i]);
         }
-        Choices.Clear();
+        choicesObjList.Clear();
     }
 }

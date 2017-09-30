@@ -9,7 +9,7 @@ public class GameDirector : MonoBehaviour {
     private int highScore;
     private int level = 1;
     private int curLevelQuestion = 0;
-    private int QuestionNum = 0;
+    private int questionNum = 0;
 
     public Question question;
     public Choice choice;
@@ -17,7 +17,7 @@ public class GameDirector : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GamePlayMgr.Instance.Init();
-        StartMain();
+        StartCoroutine(StartMain());
 	}
 	
 	// Update is called once per frame
@@ -25,22 +25,23 @@ public class GameDirector : MonoBehaviour {
 		
 	}
 
-    private void StartMain()
+    IEnumerator StartMain()
     {
+        yield return new WaitForSeconds(1.0f);
         // 开始主菜单
         score = 0;
         level = 1;
         curLevelQuestion = 0;
-        QuestionNum = 0;
+        questionNum = 0;
 
         GamePlayMgr.Instance.GenFirstChoice();
-        Question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), KanaType.Hira);
-        choice.ShowChoices(level, KanaType.Hira)
+        question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), KanaType.Hira);
+        choice.ShowChoices(level, KanaType.Hira);
     }
 
     private void LoadLevel()
     {
-        QuestionNum++;
+        questionNum++;
         if(level == 1)
         {
             level = 2;
@@ -50,18 +51,21 @@ public class GameDirector : MonoBehaviour {
         {
             if(curLevelQuestion >= DefineNumber.LevelUpNum) {
                 level++;
+                curLevelQuestion = 0;
             }
             curLevelQuestion++;
         }
 
         GamePlayMgr.Instance.GenChoices(level);
         KanaType type = KanaType.Hira;
-        if(QuestionNum > DefineNumber.QuestionNumToRand)
+        if(questionNum > DefineNumber.QuestionNumToRand)
         {
-            if(Random.Range(1, 100) > 50) type = KanaType.Kata;
+            if(Random.Range(1, 100) >= 50) {
+                type = KanaType.Kata;   
+            }
         }
-        Question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), type);
-        choice.ShowChoices(level, type)
+        question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), type);
+        choice.ShowChoices(level, type);
     }
 
     private void GameFailed()
