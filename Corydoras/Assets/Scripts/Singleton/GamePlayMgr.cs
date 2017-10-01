@@ -48,6 +48,7 @@ public class GamePlayMgr : Singleton<GamePlayMgr>
 
     public void GenFirstChoice()
     {
+        choiceItems.Clear();
         chosenIndex = 0;
         choiceItems.Add(0);
         preKanas.Enqueue(0);

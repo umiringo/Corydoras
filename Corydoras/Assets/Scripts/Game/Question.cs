@@ -9,6 +9,7 @@ public class Question : MonoBehaviour {
     public int index;
     public Text riddleText;
     public GameDirector director;
+    public Image processBar;
 
     // Use this for initialization
     void Start () {
@@ -22,9 +23,19 @@ public class Question : MonoBehaviour {
         
     }
 
+    public void StartGame()
+    {
+        processBar.fillAmount = 0.0f;
+    }
+
     public void ShowRiddle(int idx, KanaType type)
     {
         index = idx;
         riddleText.text = GamePlayMgr.Instance.GetKana(idx, type);
+    }
+
+    public void RefreshProcessBar(float amount)
+    {
+        processBar.fillAmount = 1.0f - amount;
     }
 }
