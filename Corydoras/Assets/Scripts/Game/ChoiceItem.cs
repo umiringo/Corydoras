@@ -37,6 +37,6 @@ public class ChoiceItem : MonoBehaviour {
 
     public void OnClick()
     {
-        director.OnChoice(index);
+        director.OnChoice(index, transform.position);
     }
 }

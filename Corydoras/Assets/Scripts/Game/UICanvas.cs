@@ -16,7 +16,7 @@ public class UICanvas : MonoBehaviour {
     private GameDirector director;
     public GameObject mainSoundObj;
     public GameObject mainCreditorObj;
-
+    public ParticleSystem firework;
 	// Use this for initialization
 	void Start () {
 	    director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
@@ -89,5 +89,12 @@ public class UICanvas : MonoBehaviour {
     public void OnGameCenterClick()
     {
         director.OnGameCenter();
+    }
+
+    public void PlayFirework(Vector3 pos)
+    {
+        Debug.Log("[UICanvas] PlayFirework.");
+      //  firework.transform.position = pos;
+        firework.Play();
     }
 }

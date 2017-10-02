@@ -114,8 +114,9 @@ public class GameDirector : MonoBehaviour {
         audioPlayer.StopBGM();
     }
 
-    public void OnChoice(int index)
+    public void OnChoice(int index, Vector3 psPos)
     {
+        ui.PlayFirework(psPos);
         bool ret = GamePlayMgr.Instance.CheckChoice(index);
         if(ret) {
             audioPlayer.PlayRightSound();
