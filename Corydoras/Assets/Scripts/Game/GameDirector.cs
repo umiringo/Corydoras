@@ -15,6 +15,10 @@ public class GameDirector : MonoBehaviour {
     private float curPassTime = 0.0f;
     private float passTime = DefineNumber.Cooldown;
     public float rotateSpeed = DefineNumber.RotateSpeed;
+    private GameCenter gameCenter;
+    private int tryNum;
+    private int timeout;
+
 
     public Question question;
     public Choice choice;
@@ -26,6 +30,7 @@ public class GameDirector : MonoBehaviour {
     {
 		GamePlayMgr.Instance.Init();
 		LocalizeMgr.Instance.Init();
+        gameCenter = GetComponent<GameCenter>();
     }
 
     void Start () {
@@ -34,7 +39,11 @@ public class GameDirector : MonoBehaviour {
         highScore = PlayerPrefs.GetInt(PrefsKey.HighScore, 0);
         StartCoroutine(StartMain());
         PlayerPrefs.DeleteAll();
-	}
+        tryNum = PlayerPrefs.GetInt(PrefsKey.TryNum, 0);
+        timeout = PlayerPrefs.GetInt(PrefsKey.Timeout, 0);
+        gameCenter.Login();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -42,6 +51,12 @@ public class GameDirector : MonoBehaviour {
         {
             curPassTime += Time.deltaTime;
 			if (curPassTime > passTime) {
+                if(timeout == 0)
+                {
+                    gameCenter.UpdateReportProgress(GameCenterKey.Timeout1, 1, 1);
+                    timeout++;
+                    PlayerPrefs.SetInt(PrefsKey.Timeout, timeout);
+                }
                 GameFailed();
                 curPassTime = 0;
 			}
@@ -70,12 +85,21 @@ public class GameDirector : MonoBehaviour {
     private void LoadLevel()
     {
         questionNum++;
+        if(questionNum == 10)
+        {
+            gameCenter.UpdateReportProgress(GameCenterKey.AchieveQuestion10, 50, 50);
+        }
+        if(questionNum == 100)
+        {
+            gameCenter.UpdateReportProgress(GameCenterKey.AchieveQuestion100, 100, 100);
+        }
         curPassTime = 0;
         if(level == 1)
         {
             level = 2;
             curLevelQuestion = 0;
             isStart = true;
+            AddTryNum();
         }
         else if(level < DefineNumber.MaxLevel)
         {
@@ -106,6 +130,7 @@ public class GameDirector : MonoBehaviour {
 
     private void GameFailed()
     {
+        gameCenter.UpdateScore(highScore);
 		PlayerPrefs.SetInt(PrefsKey.HighScore, highScore);
         isStart = false;
         isFailed = true;
@@ -116,9 +141,9 @@ public class GameDirector : MonoBehaviour {
 
     public void OnChoice(int index, Vector3 psPos)
     {
-        ui.PlayFirework(psPos);
         bool ret = GamePlayMgr.Instance.CheckChoice(index);
         if(ret) {
+            ui.PlayFirework(psPos);
             audioPlayer.PlayRightSound();
             // 正确，则开始一下关
             int point = (int)Mathf.Ceil(5.0f - curPassTime);
@@ -128,6 +153,22 @@ public class GameDirector : MonoBehaviour {
             }
             score += point;
             if(score > highScore) {
+                if(highScore < 10 && score >= 10)
+                {
+                    gameCenter.UpdateReportProgress(GameCenterKey.AchieveScore10, 1, 1);
+                }
+                else if(highScore < 100 && score >= 100)
+                {
+                    gameCenter.UpdateReportProgress(GameCenterKey.AchieveScore100, 1, 1);
+                }
+                else if(highScore < 500 && score >= 500)
+                {
+                    gameCenter.UpdateReportProgress(GameCenterKey.AchieveScore500, 1, 1);
+                }
+                else if(highScore < 1000 && score >= 1000)
+                {
+                    gameCenter.UpdateReportProgress(GameCenterKey.AchieveScore1000, 1, 1);
+                }
                 highScore = score;
             }
             LoadLevel();
@@ -169,6 +210,20 @@ public class GameDirector : MonoBehaviour {
 
     public void OnGameCenter()
     {
-        Debug.Log("[GameDirector] OnGameCenter.");
+        gameCenter.ShowGameCenter();
+    }
+
+    private void AddTryNum()
+    {
+        tryNum++;
+        PlayerPrefs.SetInt(PrefsKey.TryNum, tryNum);
+        if(tryNum <= 10)
+        {
+            gameCenter.UpdateReportProgress(GameCenterKey.AchieveTry10, tryNum, 10);
+        }
+        else if(tryNum <= 100)
+        {
+            gameCenter.UpdateReportProgress(GameCenterKey.AchieveTry50, tryNum, 100);
+        }
     }
 }

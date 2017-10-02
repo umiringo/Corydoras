@@ -15,7 +15,8 @@ public class ChoiceItem : MonoBehaviour {
     void Start () {
         director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
         riddleTrans = director.question.transform;
-        transform.DOScale(new Vector3(0.9f, 0.9f, 1.0f), 1.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        GetComponent<RectTransform>().DOScale(new Vector3(0.9f, 0.9f, 1.0f), 1.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        //transform.DOLocalScale(new Vector3(0.9f, 0.9f, 1.0f), 1.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         gameObject.GetComponent<Button>().onClick.AddListener(delegate {
             OnClick();
         });
@@ -30,6 +31,7 @@ public class ChoiceItem : MonoBehaviour {
     public void Assemble(int idx, KanaType type)
     {
         index = idx;
+        transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 		itemText.transform.localScale = Vector3.zero;
 		itemText.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.3f).SetEase(Ease.Linear);
         itemText.text = GamePlayMgr.Instance.GetChoiceKana(index, type);

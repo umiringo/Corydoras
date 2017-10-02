@@ -93,8 +93,7 @@ public class UICanvas : MonoBehaviour {
 
     public void PlayFirework(Vector3 pos)
     {
-        Debug.Log("[UICanvas] PlayFirework.");
-      //  firework.transform.position = pos;
+        firework.transform.position = pos;
         firework.Play();
     }
 }

@@ -43,5 +43,21 @@ namespace GlobalDefines
     {
         public static readonly string HighScore = "HighScore";
         public static readonly string Mute = "Mute";
+        public static readonly string TryNum = "TryNum";
+        public static readonly string Timeout = "Timeout";
+    }
+
+    public class GameCenterKey
+    {
+        public static readonly string Ladder = "score_rank";
+        public static readonly string AchieveScore10 = "Score10";
+        public static readonly string AchieveScore100 = "Score100";
+        public static readonly string AchieveScore500 = "Score500";
+        public static readonly string AchieveScore1000 = "Score1000";
+        public static readonly string AchieveQuestion10 = "Question10";
+        public static readonly string AchieveQuestion100 = "Question100";
+        public static readonly string AchieveTry10 = "Try10";
+        public static readonly string AchieveTry50 = "Try50";
+        public static readonly string Timeout1 = "Timeout1";
     }
 }
