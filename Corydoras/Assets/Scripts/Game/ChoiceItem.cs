@@ -11,6 +11,9 @@ public class ChoiceItem : MonoBehaviour {
     public GameDirector director;
     public Text itemText;
 
+    public Image outImage;
+    public Image inImage;
+
     // Use this for initialization
     void Start () {
         director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
@@ -40,5 +43,12 @@ public class ChoiceItem : MonoBehaviour {
     public void OnClick()
     {
         director.OnChoice(index, transform.position);
+    }
+
+    public void RefreshUIColor(Color outColor, Color inColor, Color txtColor)
+    {
+        outImage.color = outColor;
+        inImage.color = inColor;
+        itemText.color = txtColor;
     }
 }

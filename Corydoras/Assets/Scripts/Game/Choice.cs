@@ -123,4 +123,12 @@ public class Choice : MonoBehaviour {
         }
         choicesObjList.Clear();
     }
+
+    public void RefreshUIColor(Color outColor, Color inColor, Color txtColor)
+    {
+        foreach(var item in choicesObjList)
+        {
+            item.GetComponent<ChoiceItem>().RefreshUIColor(outColor, inColor, txtColor);
+        }
+    }
 }

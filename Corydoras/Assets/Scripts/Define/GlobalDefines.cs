@@ -23,6 +23,7 @@ namespace GlobalDefines
 		public static readonly string JapaneseStringPath = "Localization/JapaneseString";
 		public static readonly string TChineseStringPath = "Localization/TChineseString";
 		public static readonly string SChineseStringPath = "Localization/SChineseString";
+        public static readonly string ThemePath = "Theme/Theme";
 	}
 
     public class DefineNumber
@@ -37,6 +38,7 @@ namespace GlobalDefines
         public static readonly int HardLevelNum = 32;
         public static readonly float RotateSpeed = 20.0f;
         public static readonly float HardRotateSpeed = 40.0f;
+        public static readonly int MaxThemeIndex = 7;
     }
 
     public class PrefsKey

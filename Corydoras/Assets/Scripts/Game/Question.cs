@@ -10,6 +10,8 @@ public class Question : MonoBehaviour {
     public Text riddleText;
     public GameDirector director;
     public Image processBar;
+    public Image outImage;
+    public Image inImage;
 
     // Use this for initialization
     void Start () {
@@ -37,5 +39,12 @@ public class Question : MonoBehaviour {
     public void RefreshProcessBar(float amount)
     {
         processBar.fillAmount = 1.0f - amount;
+    }
+
+    public void RefreshUIColor(Color outColor, Color inColor, Color txtColor)
+    {
+        outImage.color = outColor;
+        inImage.color = inColor;
+        riddleText.color = txtColor;
     }
 }

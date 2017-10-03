@@ -18,23 +18,28 @@ public class GameDirector : MonoBehaviour {
     private GameCenter gameCenter;
     private int tryNum;
     private int timeout;
+    private int season;
+    private int themeIndex;
 
 
     public Question question;
     public Choice choice;
     public UICanvas ui;
     public AudioPlayer audioPlayer;
+    public UIEffectCanvas uiEffect;
 
     // Use this for initialization
     private void Awake()
     {
 		GamePlayMgr.Instance.Init();
 		LocalizeMgr.Instance.Init();
+        ThemeMgr.Instance.Init();
         gameCenter = GetComponent<GameCenter>();
     }
 
-    void Start () {
-
+    void Start () 
+    {
+        PlayerPrefs.DeleteAll();    
 		score = 0;
         highScore = PlayerPrefs.GetInt(PrefsKey.HighScore, 0);
         StartCoroutine(StartMain());
@@ -42,12 +47,11 @@ public class GameDirector : MonoBehaviour {
         tryNum = PlayerPrefs.GetInt(PrefsKey.TryNum, 0);
         timeout = PlayerPrefs.GetInt(PrefsKey.Timeout, 0);
         gameCenter.Login();
-
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(isStart)
+        if (false)
         {
             curPassTime += Time.deltaTime;
 			if (curPassTime > passTime) {
@@ -80,6 +84,7 @@ public class GameDirector : MonoBehaviour {
         choice.ShowChoices(level, KanaType.Hira);
         ui.StartGame();
         audioPlayer.PlayeBGM();
+        RefreshTheme();
     }
 
     private void LoadLevel()
@@ -126,11 +131,14 @@ public class GameDirector : MonoBehaviour {
         question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), type);
         choice.ShowChoices(level, type);
         ui.LoadLevel();
+        RefreshTheme();
     }
 
     private void GameFailed()
     {
-        gameCenter.UpdateScore(highScore);
+        if (highScore > 0) {
+            gameCenter.UpdateScore(highScore);
+        }
 		PlayerPrefs.SetInt(PrefsKey.HighScore, highScore);
         isStart = false;
         isFailed = true;
@@ -225,5 +233,42 @@ public class GameDirector : MonoBehaviour {
         {
             gameCenter.UpdateReportProgress(GameCenterKey.AchieveTry50, tryNum, 100);
         }
+    }
+
+    private void RefreshTheme()
+    {
+        if(season <= 0)
+        {
+            season = Random.Range(1, 5);
+            themeIndex = 0;
+        }
+        else {
+            themeIndex++;
+            if (themeIndex > DefineNumber.MaxThemeIndex) {
+                themeIndex = 0;
+                NextSeason();
+            }
+        }
+        Color bgColor = ThemeMgr.Instance.GetBgColor(season, themeIndex);
+        Color outColor = ThemeMgr.Instance.GetOutColor(season, themeIndex);
+        Color inColor = ThemeMgr.Instance.GetInnerColor(season, themeIndex);
+        Color txtColor = ThemeMgr.Instance.GetTextColor(season, themeIndex);
+        ui.RefreshUIColor(outColor, inColor, txtColor);
+        uiEffect.RefreshUIColor(bgColor);
+        choice.RefreshUIColor(outColor, inColor, txtColor);
+        question.RefreshUIColor(outColor, inColor, txtColor);
+    }
+
+    private void NextSeason()
+    {
+		if (season <= 0) {
+			season = Random.Range(1, 5);
+			return;
+		}
+		if (season >= 4) {
+			season = 1;
+			return;
+		}
+		season++;
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using GlobalDefines;
 
 public class UICanvas : MonoBehaviour {
-    public Image bgImage;
+	private GameDirector director;
+
     public Text topText;
     public Text bottomText;
     public Text failScoreText;
@@ -13,10 +14,17 @@ public class UICanvas : MonoBehaviour {
     public GameObject failPanel;
     public Image failSound;
     public Image mainSound;
-    private GameDirector director;
+
+    public UIButtonColor restartBtn;
+    public UIButtonColor gameCenterBtn;
+    public UIButtonColor soundBtn;
+    public UIButtonColor mainGameCenterBtn;
+    public UIButtonColor mainSoundBtn;
+
     public GameObject mainSoundObj;
     public GameObject mainCreditorObj;
     public ParticleSystem firework;
+
 	// Use this for initialization
 	void Start () {
 	    director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
@@ -95,5 +103,17 @@ public class UICanvas : MonoBehaviour {
     {
         firework.transform.position = pos;
         firework.Play();
+    }
+
+    public void RefreshUIColor(Color outColor, Color inColor, Color txtColor)
+    {
+        topText.color = txtColor;
+        bottomText.color = txtColor;
+        failScoreText.color = txtColor;
+        restartBtn.RefreshUIColor(outColor, inColor, txtColor);
+        gameCenterBtn.RefreshUIColor(outColor, inColor, txtColor);
+        soundBtn.RefreshUIColor(outColor, inColor, txtColor);
+        mainGameCenterBtn.RefreshUIColor(outColor, inColor, txtColor);
+        mainSoundBtn.RefreshUIColor(outColor, inColor, txtColor);
     }
 }

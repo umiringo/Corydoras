@@ -6,34 +6,36 @@ using UnityEngine.SocialPlatforms.GameCenter;
 using GlobalDefines;
 
 
-public class GameCenter : MonoBehaviour {
+public class GameCenter : MonoBehaviour
+{
     bool isGameCenterSuccess = false;
     public string userInfo;
     public GameDirector director;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         director = GetComponent<GameDirector>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     // 初始化gamecenter后的回调
     private void HandleAuthenticated(bool success)
     {
         isGameCenterSuccess = success;
-        if (success)
-        {
+        if (success) {
             userInfo = "Username: " + Social.localUser.userName +
                 "\nUser ID: " + Social.localUser.id +
                 "\nIsUnderage: " + Social.localUser.underage;
             Debug.Log(userInfo);
             //director.UpdateAllGameCenterData();
         }
-        else
-        {
+        else {
             Debug.Log("GameCenter Init failed");
         }
     }
@@ -66,30 +68,43 @@ public class GameCenter : MonoBehaviour {
 
     public void Login()
     {
+#if UNITY_EDITOR || UNITY_STANDALONE
+		return;
+#elif UNITY_IOS || UNITY_IPHONE
         Social.localUser.Authenticate(HandleAuthenticated);
-    }
+#endif
+	}
 
     public void ShowGameCenter()
     {
-        if (isGameCenterSuccess && Social.localUser.authenticated)
-        {
+#if UNITY_EDITOR || UNITY_STANDALONE
+		return;
+#elif UNITY_IOS || UNITY_IPHONE
+        if (isGameCenterSuccess && Social.localUser.authenticated) {
             Social.ShowLeaderboardUI();
         }
-    }
+#endif
+	}
 
     public void UpdateScore(int score)
     {
-        if (Social.localUser.authenticated)
-        {
+#if UNITY_EDITOR || UNITY_STANDALONE
+		return;
+#elif UNITY_IOS || UNITY_IPHONE
+        if (Social.localUser.authenticated) {
             Social.ReportScore(score, GameCenterKey.Ladder, HandleScoreReported);
         }
-    }
+#endif
+	}
 
     public void UpdateReportProgress(string achieveId, int score, int totalScore)
     {
-        if (Social.localUser.authenticated)
-        {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        return;
+#elif UNITY_IOS || UNITY_IPHONE
+		if (Social.localUser.authenticated) {
             Social.ReportProgress(achieveId, (double)score / (double)totalScore * 100, HandleProgressReported);
         }
+#endif
     }
 }

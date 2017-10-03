@@ -79,6 +79,8 @@ MonoBehaviour:
   riddleTrans: {fileID: 0}
   director: {fileID: 0}
   itemText: {fileID: 114969652340966216}
+  outImage: {fileID: 114706387983312844}
+  inImage: {fileID: 114757214791882528}
 --- !u!114 &114706387983312844
 MonoBehaviour:
   m_ObjectHideFlags: 1
