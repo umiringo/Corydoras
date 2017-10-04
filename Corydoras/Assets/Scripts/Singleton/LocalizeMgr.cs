@@ -14,6 +14,7 @@ public class LocalizeMgr : Singleton<LocalizeMgr> {
     private Dictionary<string, string> schineseString = new Dictionary<string, string>();
 
     public string currentLang;
+    public Font font;
 
     public void Init() 
     {
