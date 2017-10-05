@@ -48,9 +48,9 @@ public class ThemeMgr : Singleton<ThemeMgr>
             return Color.black;
         }
         JSONClass theme = themeHash[season][index];
-        string clr = theme["Bg"];
+        JSONArray clr = theme["Color"].AsArray;
         Color ret;
-        ColorUtility.TryParseHtmlString("#" + clr, out ret);
+        ColorUtility.TryParseHtmlString("#" + clr[0], out ret);
 
         return ret;
     }
@@ -67,9 +67,9 @@ public class ThemeMgr : Singleton<ThemeMgr>
 			return Color.blue;
 		}
 		JSONClass theme = themeHash[season][index];
-        string clr = theme["Out"];
-		Color ret;
-		ColorUtility.TryParseHtmlString("#" + clr, out ret);
+        JSONArray clr = theme["Color"].AsArray;
+        Color ret;
+        ColorUtility.TryParseHtmlString("#" + clr[1], out ret);
 
 		return ret;
 	}
@@ -86,9 +86,9 @@ public class ThemeMgr : Singleton<ThemeMgr>
             return Color.red;
 		}
 		JSONClass theme = themeHash[season][index];
-		string clr = theme["Inner"];
-		Color ret;
-		ColorUtility.TryParseHtmlString("#" + clr, out ret);
+        JSONArray clr = theme["Color"].AsArray;
+        Color ret;
+        ColorUtility.TryParseHtmlString("#" + clr[2], out ret);
 
 		return ret;
 	}
@@ -105,9 +105,9 @@ public class ThemeMgr : Singleton<ThemeMgr>
             return Color.yellow;
 		}
 		JSONClass theme = themeHash[season][index];
-		string clr = theme["Text"];
-		Color ret;
-		ColorUtility.TryParseHtmlString("#" + clr, out ret);
+        JSONArray clr = theme["Color"].AsArray;
+        Color ret;
+        ColorUtility.TryParseHtmlString("#" + clr[3], out ret);
 
 		return ret;
 	}
