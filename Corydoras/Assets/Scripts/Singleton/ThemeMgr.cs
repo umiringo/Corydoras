@@ -111,4 +111,24 @@ public class ThemeMgr : Singleton<ThemeMgr>
 
 		return ret;
 	}
+    public Color GetMainTextColor(int season, int index)
+    {
+        if (themeHash.ContainsKey(season) == false)
+        {
+            Debug.LogError("[ThemeMgr] No such season, season = " + season);
+            return Color.yellow;
+        }
+
+        if (themeHash[season].Count <= index)
+        {
+            Debug.LogError("[ThemeMgr] Season " + season + " has no index " + index);
+            return Color.yellow;
+        }
+        JSONClass theme = themeHash[season][index];
+        JSONArray clr = theme["Color"].AsArray;
+        Color ret;
+        ColorUtility.TryParseHtmlString("#" + clr[4], out ret);
+
+        return ret;
+    }
 }

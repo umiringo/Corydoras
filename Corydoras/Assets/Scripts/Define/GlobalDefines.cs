@@ -38,7 +38,7 @@ namespace GlobalDefines
         public static readonly int HardLevelNum = 32;
         public static readonly float RotateSpeed = 20.0f;
         public static readonly float HardRotateSpeed = 40.0f;
-        public static readonly int MaxThemeIndex = 7;
+        public static readonly int MaxThemeIndex = 15;
     }
 
     public class PrefsKey

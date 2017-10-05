@@ -105,11 +105,11 @@ public class UICanvas : MonoBehaviour {
         firework.Play();
     }
 
-    public void RefreshUIColor(Color outColor, Color inColor, Color txtColor)
+    public void RefreshUIColor(Color outColor, Color inColor, Color txtColor, Color mainTxtColor)
     {
-        topText.color = txtColor;
-        bottomText.color = txtColor;
-        failScoreText.color = txtColor;
+        topText.color = mainTxtColor;
+        bottomText.color = mainTxtColor;
+        failScoreText.color = mainTxtColor;
         restartBtn.RefreshUIColor(outColor, inColor, txtColor);
         gameCenterBtn.RefreshUIColor(outColor, inColor, txtColor);
         soundBtn.RefreshUIColor(outColor, inColor, txtColor);

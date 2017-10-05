@@ -239,7 +239,7 @@ public class GameDirector : MonoBehaviour {
     {
         if(season <= 0)
         {
-            season = Random.Range(1, 5);
+            season = Random.Range(1, 3);
             themeIndex = 0;
         }
         else {
@@ -253,8 +253,9 @@ public class GameDirector : MonoBehaviour {
         Color outColor = ThemeMgr.Instance.GetOutColor(season, themeIndex);
         Color inColor = ThemeMgr.Instance.GetInnerColor(season, themeIndex);
         Color txtColor = ThemeMgr.Instance.GetTextColor(season, themeIndex);
-        ui.RefreshUIColor(outColor, inColor, txtColor);
-        uiEffect.RefreshUIColor(bgColor);
+        Color mainTxtColor = ThemeMgr.Instance.GetMainTextColor(season, themeIndex);
+        ui.RefreshUIColor(outColor, inColor, txtColor, mainTxtColor);
+        uiEffect.RefreshUIColor(bgColor, season);
         choice.RefreshUIColor(outColor, inColor, txtColor);
         question.RefreshUIColor(outColor, inColor, txtColor);
     }
@@ -262,10 +263,10 @@ public class GameDirector : MonoBehaviour {
     private void NextSeason()
     {
 		if (season <= 0) {
-			season = Random.Range(1, 5);
+			season = Random.Range(1, 3);
 			return;
 		}
-		if (season >= 4) {
+		if (season >= 2) {
 			season = 1;
 			return;
 		}

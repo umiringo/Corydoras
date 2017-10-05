@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIEffectCanvas : MonoBehaviour {
     public Image background;
     private GameDirector director;
+    private int curSeason = 0;
+    public ParticleSystem sakura;
+    public ParticleSystem maple;
 	// Use this for initialization
 	void Start () {
 		director = GameObject.Find("MainCamera").GetComponent<GameDirector>();
@@ -17,8 +20,27 @@ public class UIEffectCanvas : MonoBehaviour {
 		
 	}
 
-    public void RefreshUIColor(Color bgColor)
+    public void RefreshUIColor(Color bgColor, int season)
     {
         background.color = bgColor;
+        if(curSeason != season)
+        {
+            curSeason = season;
+            DoEffect();
+        }
+    }
+
+    private void DoEffect()
+    {
+        if(curSeason == 1)
+        {
+            maple.Stop();
+            sakura.Play();
+        }
+        else
+        {
+            sakura.Stop();
+            maple.Play();
+        }
     }
 }

@@ -1,133 +1,133 @@
 {
     "Theme":[
         {
-            "Color":["f5d1de","fbda1f","dfedca","0e0c0c"],
+            "Color":["dd708e","a972a8","a41c45","f4f3f8","f4f3f8"],
             "Season":1
         },
         {
-            "Color":["dd708e","a972a8","a41c45","f4f3f8"],
+            "Color":["dc174b","248a4f","dd708e","f4f3f8","f4f3f8"],
             "Season":1
         },
         {
-            "Color":["dc174b","8bb05d","430814","f4f3f8"],
+            "Color":["b25588","e87cae","7e2783","f4f3f8","f4f3f8"],
             "Season":1
         },
         {
-            "Color":["bb1d46","248a4f","dd708e","f4f3f8"],
+            "Color":["944c90","ec849f","b6193c","f4f3f8","ec849f"],
             "Season":1
         },
         {
-            "Color":["b25588","e87cae","7e2783","f4f3f8"],
+            "Color":["a972a8","bb1d46","e1ccd6","248a4f","e1ccd6"],
             "Season":1
         },
         {
-            "Color":["944c90","ec849f","b6193c","f4f3f8"],
+            "Color":["8f7daa","489e67","ab97c7","bb1d46","bb1d46"],
             "Season":1
         },
         {
-            "Color":["a972a8","bb1d46","e1ccd6","228a4f"],
+            "Color":["b38691","823148","248a4f","f4f3f8","823148"],
             "Season":1
         },
         {
-            "Color":["8f7daa","489e67","ab97c7","bb1d46"],
+            "Color":["694664","e69da1","9f9d41","aed9ec","e69da1"],
             "Season":1
         },
         {
-            "Color":["8acecf","408065","e73261","f4f3f8"],
-            "Season":2
+            "Color":["e4cac9","bb1d46","cc9f9f","f4f3f8","bb1d46"],
+            "Season":1
         },
         {
-            "Color":["e1efd2","a6af4b","e73261","f8b962"],
-            "Season":2
+            "Color":["da899d","c59dbf","a972a8","f4f3f8","f4f3f8"],
+            "Season":1
         },
         {
-            "Color":["c4e1be","f4b0c0","fee5b2","a0d8e4"],
-            "Season":2
+            "Color":["8acecf","408065","e73261","f4f3f8","408065"],
+            "Season":1
         },
         {
-            "Color":["9bc7aa","bb1d46","559f78","f4f3f8"],
-            "Season":2
+            "Color":["7194b8","d0ae9d","832d36","7194b8","d0ae9d"],
+            "Season":1
         },
         {
-            "Color":["61aa81","1b814a","ebad30","f4f3f8"],
-            "Season":2
+            "Color":["9bc7aa","bb1d46","559f78","f4f3f8","559f78"],
+            "Season":1
         },
         {
-            "Color":["6ba732","e7b2c5","da5086","f4f3f8"],
-            "Season":2
+            "Color":["61aa81","1b814a","ebad30","f4f3f8","ebad30"],
+            "Season":1
         },
         {
-            "Color":["248a4f","c7ca28","bb1d46","f4f3f8"],
-            "Season":2
+            "Color":["6ba732","e7b2c5","da5086","f4f3f8","e7b2c5"],
+            "Season":1
         },
 
         {
-            "Color":["9d9580","ebb899","da8e68","d6eacc"],
+            "Color":["248a4f","c7ca28","bb1d46","f4f3f8","c7ca28"],
+            "Season":1
+        },
+        {
+            "Color":["143345","8a2f28","f3e2c1","205390","f3e2c1"],
             "Season":2
         },
         {
-            "Color":["857c2a","f5c645","6fc18e","f4f3f8"],
-            "Season":3
+            "Color":["205390","bb7144","f3e2c1","205390","f3e2c1"],
+            "Season":2
         },
         {
-            "Color":["c7ca28","1b814a","ebad30","f4f3f8"],
-            "Season":3
+            "Color":["60754e","826260","e9d9c5","60754e","e9d9c5"],
+            "Season":2
         },
         {
-            "Color":["ffeb8d","c0e2f4","fbf4d1","cfe6c2"],
-            "Season":3
+            "Color":["857c2a","f5c645","6fc18e","f4f3f8","f5c645"],
+            "Season":2
         },
         {
-            "Color":["e8cfaa","744645","a5aa66","f4f3f8"],
-            "Season":3
+            "Color":["6f7e41","ceacb3","023766","ceacb3","023766"],
+            "Season":2
         },
         {
-            "Color":["e8931e","61aa81","efdbb8","157d47"],
-            "Season":3
+            "Color":["797e47","535655","e9dab5","535655","e9dab5"],
+            "Season":2
         },
         {
-            "Color":["edaf5e","248a4f","da851e","f4f3f8"],
-            "Season":3
+            "Color":["938d59","ef9b8f","eadb97","938d59","eadb97"],
+            "Season":2
         },
         {
-            "Color":["f5d797","e9882e","c4dab9","7ec7c2"],
-            "Season":3
+            "Color":["8faa8a","7d3e59","dfedca","5a773e","7d3e59"],
+            "Season":2
         },
         {
-            "Color":["f8edd3","eec093","9e964c","f4f3f8"],
-            "Season":3
+            "Color":["e9d9c5","60754e","826260","e9d9c5","60754e"],
+            "Season":2
         },
         {
-            "Color":["fdedde","92cfc0","f2a9a9","f9c9aa"],
-            "Season":4
+            "Color":["744645","a5aa66","e9d9c5","744645","a5aa66"],
+            "Season":2
         },
         {
-            "Color":["f6e7e6","bbe1d9","d5c18f","f4f3f8"],
-            "Season":4
+            "Color":["9c4c27","d1b333","3d3839","f4f0e5","f4f0e5"],
+            "Season":2
         },
         {
-            "Color":["f0e1ee","e0f1f2","a9cc65","e0f1f2"],
-            "Season":4
+            "Color":["b68c40","bd96b7","673c6e","b68c40","673c6e"],
+            "Season":2
         },
         {
-            "Color":["b38691","823148","248a4f","f4f3f8"],
-            "Season":4
+            "Color":["d1b333","67453d","9c4c27","d1b333","67453d"],
+            "Season":2
         },
         {
-            "Color":["694664","e69da1","9f9d41","aed9ec"],
-            "Season":4
+            "Color":["e8931e","61aa81","efdbb8","157d47","efdbb8"],
+            "Season":2
         },
         {
-            "Color":["da899d","c59dbf","a972a8","f4f3f8"],
-            "Season":4
+            "Color":["edaf5e","248a4f","da851e","f4f3f8","248a4f"],
+            "Season":2
         },
         {
-            "Color":["e4cac9","bb1d46","cc9f9f","f4f3f8"],
-            "Season":4
-        },
-        {
-            "Color":["ecced4","d88745","d5c8b6","f4f3f8"],
-            "Season":4
+            "Color":["e8cfaa","744645","a5aa66","f4f3f8","744645"],
+            "Season":2
         },
 
     ],
