@@ -64,7 +64,7 @@ public class AudioPlayer : MonoBehaviour {
 
     IEnumerator StopPlay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         audioSource.Stop();
     }
 

@@ -51,7 +51,7 @@ public class GameDirector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (false)
+        if (isStart)
         {
             curPassTime += Time.deltaTime;
 			if (curPassTime > passTime) {

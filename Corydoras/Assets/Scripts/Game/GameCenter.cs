@@ -78,13 +78,17 @@ public class GameCenter : MonoBehaviour
     public void ShowGameCenter()
     {
 #if UNITY_EDITOR || UNITY_STANDALONE
-		return;
+        return;
 #elif UNITY_IOS || UNITY_IPHONE
         if (isGameCenterSuccess && Social.localUser.authenticated) {
             Social.ShowLeaderboardUI();
         }
+        else
+        {
+            Login();
+        }
 #endif
-	}
+    }
 
     public void UpdateScore(int score)
     {
