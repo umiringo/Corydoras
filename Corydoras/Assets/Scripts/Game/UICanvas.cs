@@ -58,14 +58,25 @@ public class UICanvas : MonoBehaviour {
         bottomText.text = LocalizeMgr.Instance.GetString("LKHighScore") + director.highScore;
     }
 
-    public void GameFail()
+    public void GameFail(int riddle, KanaType type)
     {
 		gamePanel.SetActive(false);
 		failPanel.SetActive(true);
-        topText.text = "Game\nOver";
+        topText.text = "GAME OVER";
         topText.fontSize = 128;
-        bottomText.text = LocalizeMgr.Instance.GetString("LKHighScore") + director.highScore;
-        failScoreText.text = LocalizeMgr.Instance.GetString("LKScore") + " : " + director.score.ToString();
+        bottomText.text = LocalizeMgr.Instance.GetString("LKScore") + " : " + director.score.ToString() + "\n" + LocalizeMgr.Instance.GetString("LKHighScore") + director.highScore;
+        string riddleStr = GamePlayMgr.Instance.GetKana(riddle, type);
+        string answerStr = "";
+        if(type == KanaType.Hira)
+        {
+            answerStr = GamePlayMgr.Instance.GetKana(riddle, KanaType.Kata);
+        }
+        else
+        {
+            answerStr = GamePlayMgr.Instance.GetKana(riddle, KanaType.Hira);
+        }
+            
+        failScoreText.text = riddleStr + " : " + answerStr;
         RefreshSoundIcon();
     }
 

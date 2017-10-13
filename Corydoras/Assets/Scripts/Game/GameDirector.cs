@@ -20,6 +20,7 @@ public class GameDirector : MonoBehaviour {
     private int timeout;
     private int season;
     private int themeIndex;
+    private KanaType kanaType;
 
 
     public Question question;
@@ -39,7 +40,7 @@ public class GameDirector : MonoBehaviour {
 
     void Start () 
     {
-        PlayerPrefs.DeleteAll();    
+        //PlayerPrefs.DeleteAll();    
 		score = 0;
         highScore = PlayerPrefs.GetInt(PrefsKey.HighScore, 0);
         StartCoroutine(StartMain());
@@ -116,11 +117,11 @@ public class GameDirector : MonoBehaviour {
         }
 
         GamePlayMgr.Instance.GenChoices(level);
-        KanaType type = KanaType.Hira;
+        kanaType = KanaType.Hira;
         if(questionNum > DefineNumber.QuestionNumToRand)
         {
             if(Random.Range(1, 100) >= 50) {
-                type = KanaType.Kata;   
+                kanaType = KanaType.Kata;   
             }
         }
         if (questionNum > DefineNumber.HardLevelNum)
@@ -128,8 +129,8 @@ public class GameDirector : MonoBehaviour {
             passTime = DefineNumber.HardCooldown;
             rotateSpeed = DefineNumber.HardRotateSpeed;
         }
-        question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), type);
-        choice.ShowChoices(level, type);
+        question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), kanaType);
+        choice.ShowChoices(level, kanaType);
         ui.LoadLevel();
         RefreshTheme();
     }
@@ -143,7 +144,7 @@ public class GameDirector : MonoBehaviour {
         isStart = false;
         isFailed = true;
         curPassTime = 0.0f;
-        ui.GameFail();
+        ui.GameFail(GamePlayMgr.Instance.GetChosenIndex(), kanaType);
         audioPlayer.StopBGM();
     }
 

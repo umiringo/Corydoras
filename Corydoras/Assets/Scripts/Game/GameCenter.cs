@@ -32,38 +32,38 @@ public class GameCenter : MonoBehaviour
             userInfo = "Username: " + Social.localUser.userName +
                 "\nUser ID: " + Social.localUser.id +
                 "\nIsUnderage: " + Social.localUser.underage;
-            Debug.Log(userInfo);
+           // Debug.Log(userInfo);
             //director.UpdateAllGameCenterData();
         }
         else {
-            Debug.Log("GameCenter Init failed");
+            //Debug.Log("GameCenter Init failed");
         }
     }
 
     private void HandleAchievementsLoaded(IAchievement[] achievements)
     {
-        Debug.Log("HandleAchievementsLoaded");
+        //Debug.Log("HandleAchievementsLoaded");
     }
 
     private void HandleAchievementDescriptionsLoaded(IAchievementDescription[] achievementDescriptions)
     {
-        Debug.Log("HandleAchievementDescriptionsLoaded");
+        //Debug.Log("HandleAchievementDescriptionsLoaded");
     }
 
     private void HandleFriendsLoaded(bool success)
     {
-        Debug.Log("HandleFriendsLoaded: success = " + success);
+        //Debug.Log("HandleFriendsLoaded: success = " + success);
     }
 
     //上传排行榜分数  
     private void HandleScoreReported(bool success)
     {
-        Debug.Log("HandleScoreReported: success = " + success);
+        //Debug.Log("HandleScoreReported: success = " + success);
     }
     //设置 成就  
     private void HandleProgressReported(bool success)
     {
-        Debug.Log("HandleProgressReported: success = " + success);
+        //Debug.Log("HandleProgressReported: success = " + success);
     }
 
     public void Login()
