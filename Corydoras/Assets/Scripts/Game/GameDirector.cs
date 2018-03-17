@@ -129,6 +129,11 @@ public class GameDirector : MonoBehaviour {
             passTime = DefineNumber.HardCooldown;
             rotateSpeed = DefineNumber.HardRotateSpeed;
         }
+        else
+        {
+            passTime = DefineNumber.Cooldown;
+            rotateSpeed = DefineNumber.RotateSpeed;
+        }
         question.ShowRiddle(GamePlayMgr.Instance.GetChosenIndex(), kanaType);
         choice.ShowChoices(level, kanaType);
         ui.LoadLevel();
