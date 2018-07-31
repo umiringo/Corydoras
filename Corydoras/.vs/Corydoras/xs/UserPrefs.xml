@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{91A0D80C-7602-3088-96C3-2D755544A158}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/GameDirector.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Game/ChoiceItem.cs" Line="30" Column="105" />
+      <File FileName="Assets/Scripts/Game/Choice.cs" Line="131" Column="87" />
+      <File FileName="Assets/Scripts/Game/GameDirector.cs" Line="147" Column="10" />
+      <File FileName="Assets/Scripts/Game/Question.cs" Line="33" Column="27" />
+      <File FileName="Assets/Scripts/Singleton/GamePlayMgr.cs" Line="85" Column="30" />
+      <File FileName="Assets/Scripts/Define/GlobalDefines.cs" Line="41" Column="55" />
+      <File FileName="Assets/Scripts/Game/UICanvas.cs" Line="25" Column="39" />
+      <File FileName="Assets/Scripts/Singleton/LocalizeMgr.cs" Line="20" Column="6" />
+      <File FileName="Assets/Scripts/Singleton/ThemeMgr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Game/UIButtonColor.cs" Line="26" Column="31" />
+      <File FileName="Assets/Scripts/Game/UIEffectCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Game/GameCenter.cs" Line="97" Column="32" />
+      <File FileName="Assets/Scripts/Game/AudioPlayer.cs" Line="69" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Corydoras PreferredExecutionTarget="Unity.Editor" />
+</Properties>
